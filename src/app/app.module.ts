@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -6,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { LoggerProvider } from '../providers/logger/logger';
-import { UserHelperProvider } from '../providers/user-helper/user-helper';
+import { UserHelper } from '../providers/user-helper/user-helper';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { UserHelperProvider } from '../providers/user-helper/user-helper';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -25,7 +27,7 @@ import { UserHelperProvider } from '../providers/user-helper/user-helper';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoggerProvider,
-    UserHelperProvider
+    UserHelper
   ]
 })
 export class AppModule {}

@@ -11,7 +11,7 @@ export class UserHelper {
     this.users = [];
   }
 
-  getLogs() {
+  getUsers() {
     return Promise.resolve(this.users);
   }
 
