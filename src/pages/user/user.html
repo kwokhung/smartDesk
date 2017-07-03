@@ -8,5 +8,8 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
+    <button ion-item *ngFor="let user of users" (click)="openUserDetails(user)">
+            <p>{{user.name}}</p>
+        </button>
   </ion-list>
 </ion-content>

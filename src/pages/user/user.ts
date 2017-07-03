@@ -25,7 +25,7 @@ export class UserPage {
   getUsers() {
     this.userHelper.getUsers().then((data) => {
       this.users = data.slice(0);
-      this.users = this.users.reverse();
+      //this.users = this.users.reverse();
     });
   }
 
