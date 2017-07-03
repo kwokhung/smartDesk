@@ -13,6 +13,7 @@ export interface MenuItem {
   templateUrl: 'app.html'
 })
 export class MyApp {
+
   @ViewChild(Nav) nav: Nav;
   rootPage: any = 'HomePage';
   appMenuItems: Array<MenuItem>;
@@ -24,12 +25,13 @@ export class MyApp {
     });
 
     this.appMenuItems = [
-      { title: 'Home', component: 'HomePage', icon: 'home' }
+      { title: 'Home', component: 'HomePage', icon: 'home' },
+      { title: 'User', component: 'UserPage', icon: 'people' }
     ];
   }
 
   openPage(page) {
     this.nav.setRoot(page.component);
   }
-}
 
+}
