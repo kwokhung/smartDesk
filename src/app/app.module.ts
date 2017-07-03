@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { LoggerProvider } from '../providers/logger/logger';
+import { UserHelperProvider } from '../providers/user-helper/user-helper';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoggerProvider } from '../providers/logger/logger';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LoggerProvider
+    LoggerProvider,
+    UserHelperProvider
   ]
 })
 export class AppModule {}

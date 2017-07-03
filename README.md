@@ -5,6 +5,7 @@ ionic start smartDesk blank
 ionic g page home
 ionic g page user
 ionic g provider logger
+ionic g provider userHelper
 
 npm install electron electron-builder --save-dev
 
