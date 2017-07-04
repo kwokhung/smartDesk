@@ -30,11 +30,7 @@ export class UserPage {
   }
 
   openUserDetails(user) {
-    this.alertCtrl.create({
-      title: "User Details",
-      subTitle: JSON.stringify(user),
-      buttons: ["Close"]
-    }).present();
+    this.navCtrl.push('UserDetailsPage', user);
   }
 
 }

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>User Details Page</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <h2>{{user.name}}</h2>
+      <h3>{{user.path}}</h3>
+    </ion-card-content>
+    <ion-list>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>objectClass</p>
+        <h2>{{user.properties.objectClass}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>cn</p>
+        <h2>{{user.properties.cn}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>description</p>
+        <h2>{{user.properties.description}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>distinguishedName</p>
+        <h2>{{user.properties.distinguishedName}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>whenCreated</p>
+        <h2>{{user.properties.whenCreated}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>whenChanged</p>
+        <h2>{{user.properties.whenChanged}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>memberOf</p>
+        <h2>{{user.properties.memberOf}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>name</p>
+        <h2>{{user.properties.name}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>badPwdCount</p>
+        <h2>{{user.properties.badPwdCount}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>logonCount</p>
+        <h2>{{user.properties.logonCount}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>sAMAccountName</p>
+        <h2>{{user.properties.sAMAccountName}}</h2>
+      </a>
+      <a href="#" ion-item>
+        <ion-icon name="arrow-dropright" item-left></ion-icon>
+        <p>objectCategory</p>
+        <h2>{{user.properties.objectCategory}}</h2>
+      </a>
+    </ion-list>
+  </ion-card>
+</ion-content>

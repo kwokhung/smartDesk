@@ -4,6 +4,7 @@ ionic start smartDesk blank
 
 ionic g page home
 ionic g page user
+ionic g page userDetails
 ionic g provider logger
 ionic g provider userHelper
 
