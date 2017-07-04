@@ -11,7 +11,7 @@ import { UserHelper } from '../../providers/user-helper/user-helper';
 })
 export class UserPage {
 
-  users: Array<string> = [];
+  users: Array<any> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public userHelper: UserHelper) {
   }
@@ -24,8 +24,9 @@ export class UserPage {
 
   getUsers() {
     this.userHelper.getUsers().then((data) => {
-      this.users = data.slice(0);
+      //this.users = data.slice(0);
       //this.users = this.users.reverse();
+      this.users = data;
     });
   }
 
