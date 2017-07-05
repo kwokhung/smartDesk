@@ -35,4 +35,14 @@ export class UserDetailsPage {
     });
   }
 
+  resetPassword(user) {
+    this.userHelper.resetPassword(user.properties.sAMAccountName[0]).then((data) => {
+      this.toastCtrl.create({
+        message: 'Password is reset',
+        duration: 1000,
+        position: 'middle'
+      }).present();
+    });
+  }
+
 }
