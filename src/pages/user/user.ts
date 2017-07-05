@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { UserHelper } from '../../providers/user-helper/user-helper';
 
 @IonicPage({
@@ -13,7 +13,7 @@ export class UserPage {
 
   users: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public userHelper: UserHelper) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public userHelper: UserHelper) {
   }
 
   ionViewDidLoad() {
@@ -39,25 +39,57 @@ export class UserPage {
   }
 
   deleteUser(user) {
-    this.userHelper.deleteUser(user.samAccountName).then((data) => {
-      this.toastCtrl.create({
-        message: 'User is deleted',
-        duration: 1000,
-        position: 'middle'
-      }).present();
+    this.alertCtrl.create({
+      title: 'System Message',
+      message: 'Confirm to proceed?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.userHelper.deleteUser(user.samAccountName).then((data) => {
+              this.toastCtrl.create({
+                message: 'User is deleted',
+                duration: 1000,
+                position: 'middle'
+              }).present();
 
-      this.navCtrl.push('UserPage');
-    });
+              this.navCtrl.push('UserPage');
+            });
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+          }
+        }
+      ]
+    }).present();
   }
 
   resetPassword(user) {
-    this.userHelper.resetPassword(user.samAccountName).then((data) => {
-      this.toastCtrl.create({
-        message: 'Password is reset',
-        duration: 1000,
-        position: 'middle'
-      }).present();
-    });
+    this.alertCtrl.create({
+      title: 'System Message',
+      message: 'Confirm to proceed?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.userHelper.resetPassword(user.samAccountName).then((data) => {
+              this.toastCtrl.create({
+                message: 'Password is reset',
+                duration: 1000,
+                position: 'middle'
+              }).present();
+            });
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+          }
+        }
+      ]
+    }).present();
   }
 
 }
