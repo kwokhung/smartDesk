@@ -28,7 +28,8 @@ export class AddUserPage {
     this.userHelper.addUser(this.config.value.txtSamAccountName).then((data) => {
       this.toastCtrl.create({
         message: 'User is added',
-        duration: 1000
+        duration: 1000,
+        position: 'middle'
       }).present();
 
       this.navCtrl.push('UserPage');

@@ -27,7 +27,8 @@ export class UserDetailsPage {
     this.userHelper.deleteUser(user.properties.sAMAccountName[0]).then((data) => {
       this.toastCtrl.create({
         message: 'User is deleted',
-        duration: 1000
+        duration: 1000,
+        position: 'middle'
       }).present();
 
       this.navCtrl.push('UserPage');
