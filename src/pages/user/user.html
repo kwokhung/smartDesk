@@ -3,13 +3,18 @@
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addUser()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>User Page</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
   <ion-list>
     <button ion-item *ngFor="let user of users" (click)="openUserDetails(user)">
-            <p>{{user.name}}</p>
-        </button>
+      <p>{{user.name}}</p>
+    </button>
   </ion-list>
 </ion-content>

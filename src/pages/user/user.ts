@@ -24,14 +24,16 @@ export class UserPage {
 
   getUsers() {
     this.userHelper.getUsers().then((data) => {
-      //this.users = data.slice(0);
-      //this.users = this.users.reverse();
       this.users = data;
     });
   }
 
   openUserDetails(user) {
     this.navCtrl.push('UserDetailsPage', user);
+  }
+
+  addUser() {
+    this.navCtrl.push('AddUserPage');
   }
 
 }

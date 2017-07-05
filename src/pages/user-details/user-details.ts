@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { UserHelper } from '../../providers/user-helper/user-helper';
 
 @IonicPage({
@@ -13,7 +13,7 @@ export class UserDetailsPage {
 
   user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public userHelper: UserHelper) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public userHelper: UserHelper) {
     this.userHelper.getUser(this.navParams.data.samAccountName).then((data) => {
       this.user = data;
     });
@@ -21,6 +21,15 @@ export class UserDetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserDetailsPage');
+  }
+
+  deleteUser(user) {
+    this.userHelper.deleteUser(user.properties.sAMAccountName[0]).then((data) => {
+      this.toastCtrl.create({
+        message: 'User is deleted',
+        duration: 1000
+      }).present();
+    });
   }
 
 }
