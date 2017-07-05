@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Http, Headers, RequestOptions } from '@angular/http';
 import { UserHelper } from '../../providers/user-helper/user-helper';
 
 @IonicPage({
@@ -15,7 +14,7 @@ export class AddUserPage {
 
   config: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public formBuilder: FormBuilder, public http: Http, public userHelper: UserHelper) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
     this.config = this.formBuilder.group({
       txtSamAccountName: ['', Validators.required]
     });
