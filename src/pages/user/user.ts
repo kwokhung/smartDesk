@@ -18,7 +18,9 @@ export class UserPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
+  }
 
+  ionViewDidEnter() {
     this.getUsers();
   }
 

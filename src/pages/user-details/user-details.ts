@@ -29,6 +29,8 @@ export class UserDetailsPage {
         message: 'User is deleted',
         duration: 1000
       }).present();
+
+      this.navCtrl.push('UserPage');
     });
   }
 
