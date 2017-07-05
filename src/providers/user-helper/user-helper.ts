@@ -45,4 +45,14 @@ export class UserHelper {
     });
   }
 
+  addUser(samAccountName: string) {
+    return new Promise<Array<string>>(resolve => {
+      this.http.post('http://localhost:5400/api/ADService/User/Add', { txtSamAccountName: samAccountName }, new RequestOptions({
+        headers: new Headers({ 'Content-Type': 'application/json' })
+      })).subscribe(data => {
+        resolve(data.json().content.datetime);
+      });
+    });
+  }
+
 }
