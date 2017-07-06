@@ -74,19 +74,25 @@
         <h3>{{user.properties.objectCategory}}</h3>
       </ion-item>
     </ion-list>
-    <ion-item>
-      <button ion-button icon-left (click)="deleteUser(user)" clear item-left>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons right>
+      <button ion-button (click)="deleteUser(user)">
         <ion-icon name="trash"></ion-icon>
         <span>Delete</span>
       </button>
-      <button ion-button icon-left (click)="resetPassword(user)" clear item-left>
+    </ion-buttons>
+    <ion-buttons left>
+      <button ion-button (click)="resetPassword(user)">
         <ion-icon name="key"></ion-icon>
         <span>Reset Password</span>
       </button>
-      <button ion-button icon-left (click)="editUser(user)" clear item-left>
+      <button ion-button (click)="editUser(user)">
         <ion-icon name="create"></ion-icon>
         <span>Edit</span>
       </button>
-    </ion-item>
-  </ion-card>
-</ion-content>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -77,4 +77,8 @@ export class UserDetailsPage {
     }).present();
   }
 
+  editUser(user) {
+    this.navCtrl.push('EditUserPage', user);
+  }
+
 }

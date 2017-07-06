@@ -92,4 +92,8 @@ export class UserPage {
     }).present();
   }
 
+  editUser(user) {
+    this.navCtrl.push('EditUserPage', user);
+  }
+
 }
