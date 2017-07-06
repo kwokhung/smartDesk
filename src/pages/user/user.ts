@@ -25,8 +25,8 @@ export class UserPage {
   }
 
   getUsers() {
-    this.userHelper.getUsers().then((data) => {
-      this.users = data;
+    this.userHelper.getUsers().then((data: any) => {
+      this.users = data.content.userList;
     });
   }
 

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Http, Headers, RequestOptions } from '@angular/http';
-//import 'rxjs/add/operator/map';
-//import 'rxjs/Rx';
 
 @Injectable()
 export class UserHelper {
@@ -14,34 +12,44 @@ export class UserHelper {
   }
 
   getUsers() {
-    /*return this.http.get('http://localhost:5400/api/ADService/User/List', new RequestOptions({
-      headers: new Headers({ 'Content-Type': 'application/json' })
-    })).map(data => data.json().content.userList).toPromise();*/
     return new Promise<Array<string>>(resolve => {
       this.http.get('http://localhost:5400/api/ADService/User/List', new RequestOptions({
-        headers: new Headers({ 'Content-Type': 'application/json' })
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        })
       })).subscribe(data => {
-        resolve(data.json().content.userList);
+        resolve(data.json());
       });
     });
   }
 
   getUser(samAccountName: string) {
     return new Promise<Array<string>>(resolve => {
-      this.http.post('http://localhost:5400/api/ADService/User/Get', { txtSamAccountName: samAccountName }, new RequestOptions({
-        headers: new Headers({ 'Content-Type': 'application/json' })
+      this.http.post('http://localhost:5400/api/ADService/User/Get', {
+        txtSamAccountName: samAccountName
+      }, new RequestOptions({
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        })
       })).subscribe(data => {
-        resolve(data.json().content.user);
+        resolve(data.json());
       });
     });
   }
 
   deleteUser(samAccountName: string) {
     return new Promise<Array<string>>(resolve => {
-      this.http.post('http://localhost:5400/api/ADService/User/Delete', { txtSamAccountName: samAccountName }, new RequestOptions({
-        headers: new Headers({ 'Content-Type': 'application/json' })
+      this.http.post('http://localhost:5400/api/ADService/User/Delete', {
+        txtSamAccountName: samAccountName
+      }, new RequestOptions({
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        })
       })).subscribe(data => {
-        resolve(data.json().content.datetime);
+        resolve(data.json());
       });
     });
   }
@@ -63,10 +71,15 @@ export class UserHelper {
 
   resetPassword(samAccountName: string) {
     return new Promise<Array<string>>(resolve => {
-      this.http.post('http://localhost:5400/api/ADService/User/ResetPassword', { txtSamAccountName: samAccountName }, new RequestOptions({
-        headers: new Headers({ 'Content-Type': 'application/json' })
+      this.http.post('http://localhost:5400/api/ADService/User/ResetPassword', {
+        txtSamAccountName: samAccountName
+      }, new RequestOptions({
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        })
       })).subscribe(data => {
-        resolve(data.json().content.datetime);
+        resolve(data.json());
       });
     });
   }
@@ -77,9 +90,12 @@ export class UserHelper {
         txtSamAccountName: samAccountName,
         txtDescription: form.value.txtDescription
       }, new RequestOptions({
-        headers: new Headers({ 'Content-Type': 'application/json' })
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        })
       })).subscribe(data => {
-        resolve(data.json().content.datetime);
+        resolve(data.json());
       });
     });
   }

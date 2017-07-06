@@ -14,8 +14,8 @@ export class UserDetailsPage {
   user: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public userHelper: UserHelper) {
-    this.userHelper.getUser(this.navParams.data.samAccountName).then((data) => {
-      this.user = data;
+    this.userHelper.getUser(this.navParams.data.samAccountName).then((data: any) => {
+      this.user = data.content.user;
     });
   }
 
