@@ -16,6 +16,17 @@ export class EditUserPage {
   form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad EditUserPage');
+  }
+
+  ionViewDidEnter() {
+    this.getUser();
+  }
+
+  getUser() {
     this.userHelper.getUser(this.navParams.data.samAccountName).then((data: any) => {
       this.user = data.content.user;
 
@@ -23,10 +34,6 @@ export class EditUserPage {
         txtDescription: [(this.user.properties.description == null ? '' : this.user.properties.description[0]), Validators.required]
       });
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditUserPage');
   }
 
   submit() {
