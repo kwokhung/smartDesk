@@ -12,10 +12,10 @@ import { UserHelper } from '../../providers/user-helper/user-helper';
 })
 export class AddUserPage {
 
-  config: FormGroup;
+  form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
-    this.config = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       txtSamAccountName: ['', Validators.required]
     });
   }
@@ -25,7 +25,7 @@ export class AddUserPage {
   }
 
   submit() {
-    this.userHelper.addUser(this.config.value.txtSamAccountName).then((data) => {
+    this.userHelper.addUser(this.form.value.txtSamAccountName).then((data) => {
       this.toastCtrl.create({
         message: 'User is added',
         duration: 1000,
