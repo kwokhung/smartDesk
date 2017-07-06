@@ -5,10 +5,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class UserHelper {
 
-  users: Array<string>;
-
   constructor(public http: Http) {
-    this.users = [];
   }
 
   getUsers() {
