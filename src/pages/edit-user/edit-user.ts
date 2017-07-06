@@ -30,14 +30,14 @@ export class EditUserPage {
   }
 
   submit() {
-    this.userHelper.addUser(this.form.value.txtSamAccountName).then((data) => {
+    this.userHelper.editUser(this.user.samAccountName, this.form).then((data) => {
       this.toastCtrl.create({
         message: 'User is edited',
         duration: 1000,
         position: 'middle'
       }).present();
 
-      this.navCtrl.push('UserDetailsPage');
+      this.navCtrl.push('UserDetailsPage', this.user);
     });
   }
 
