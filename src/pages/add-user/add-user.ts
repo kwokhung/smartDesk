@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserHelper } from '../../providers/user-helper/user-helper';
 
@@ -14,7 +14,7 @@ export class AddUserPage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
     this.form = this.formBuilder.group({
       txtSamAccountName: ['', Validators.required]
     });
@@ -25,14 +25,23 @@ export class AddUserPage {
   }
 
   submit() {
-    this.userHelper.addUser(this.form.value.txtSamAccountName).then((data) => {
-      this.toastCtrl.create({
-        message: 'User is added',
-        duration: 1000,
-        position: 'middle'
-      }).present();
+    this.userHelper.addUser(this.form.value.txtSamAccountName).then((data: any) => {
+      if (data.status === "true") {
+        this.toastCtrl.create({
+          message: 'User is added',
+          duration: 1000,
+          position: 'middle'
+        }).present();
 
-      this.navCtrl.push('UserPage');
+        this.navCtrl.pop();
+      }
+      else {
+        this.alertCtrl.create({
+          title: JSON.stringify(data.errMsg),
+          subTitle: JSON.stringify(data.content.detailMessage),
+          buttons: ["Close"]
+        }).present();
+      }
     });
   }
 
