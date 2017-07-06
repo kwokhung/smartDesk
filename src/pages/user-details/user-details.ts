@@ -25,7 +25,7 @@ export class UserDetailsPage {
 
   deleteUser(user) {
     this.alertCtrl.create({
-      title: 'System Message',
+      title: 'Delete User',
       message: 'Confirm to proceed?',
       buttons: [
         {
@@ -53,7 +53,7 @@ export class UserDetailsPage {
 
   resetPassword(user) {
     this.alertCtrl.create({
-      title: 'System Message',
+      title: 'Reset Password',
       message: 'Confirm to proceed?',
       buttons: [
         {
