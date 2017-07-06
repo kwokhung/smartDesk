@@ -12,11 +12,14 @@ import { UserHelper } from '../../providers/user-helper/user-helper';
 })
 export class EditUserPage {
 
+  user: any;
   form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
+    this.user = this.navParams.data;
+
     this.form = this.formBuilder.group({
-      txtSamAccountName: ['', Validators.required]
+      txtSamAccountName: [this.user.samAccountName, Validators.required]
     });
   }
 
@@ -27,12 +30,12 @@ export class EditUserPage {
   submit() {
     this.userHelper.addUser(this.form.value.txtSamAccountName).then((data) => {
       this.toastCtrl.create({
-        message: 'User is added',
+        message: 'User is edited',
         duration: 1000,
         position: 'middle'
       }).present();
 
-      this.navCtrl.push('UserPage');
+      this.navCtrl.push('UserDetailsPage');
     });
   }
 
