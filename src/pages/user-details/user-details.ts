@@ -14,6 +14,17 @@ export class UserDetailsPage {
   user: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public userHelper: UserHelper) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad UserDetailsPage');
+  }
+
+  ionViewDidEnter() {
+    this.getUser();
+  }
+
+  getUser() {
     this.userHelper.getUser(this.navParams.data.samAccountName).then((data: any) => {
       if (data.status === "true") {
         this.user = data.content.user;
@@ -32,10 +43,6 @@ export class UserDetailsPage {
         buttons: ["Close"]
       }).present();
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserDetailsPage');
   }
 
   deleteUser(user) {
