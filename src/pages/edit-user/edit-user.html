@@ -7,10 +7,14 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="user">
     <ion-item>
       <ion-label>SamAccountName</ion-label>
-      <ion-input type="text" formControlName="txtSamAccountName"></ion-input>
+      <ion-label>{{user.samAccountName}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input type="text" formControlName="txtDescription"></ion-input>
     </ion-item>
     <button ion-button type="submit" [disabled]="!form.valid">Save</button>
   </form>

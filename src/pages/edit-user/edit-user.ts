@@ -16,10 +16,12 @@ export class EditUserPage {
   form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
-    this.user = this.navParams.data;
+    this.userHelper.getUser(this.navParams.data.samAccountName).then((data) => {
+      this.user = data;
 
-    this.form = this.formBuilder.group({
-      txtSamAccountName: [this.user.samAccountName, Validators.required]
+      this.form = this.formBuilder.group({
+        txtDescription: [(this.user.properties.description == null ? '' : this.user.properties.description[0]), Validators.required]
+      });
     });
   }
 
