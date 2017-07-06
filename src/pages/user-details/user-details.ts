@@ -25,6 +25,12 @@ export class UserDetailsPage {
           buttons: ["Close"]
         }).present();
       }
+    }, (data: any) => {
+      this.alertCtrl.create({
+        title: 'System Error',
+        subTitle: JSON.stringify(data),
+        buttons: ["Close"]
+      }).present();
     });
   }
 
@@ -55,6 +61,12 @@ export class UserDetailsPage {
                   buttons: ["Close"]
                 }).present();
               }
+            }, (data: any) => {
+              this.alertCtrl.create({
+                title: 'System Error',
+                subTitle: JSON.stringify(data),
+                buttons: ["Close"]
+              }).present();
             });
           }
         },
@@ -90,6 +102,12 @@ export class UserDetailsPage {
                   buttons: ["Close"]
                 }).present();
               }
+            }, (data: any) => {
+              this.alertCtrl.create({
+                title: 'System Error',
+                subTitle: JSON.stringify(data),
+                buttons: ["Close"]
+              }).present();
             });
           }
         },

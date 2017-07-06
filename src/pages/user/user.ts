@@ -37,11 +37,11 @@ export class UserPage {
         }).present();
       }
     }, (data: any) => {
-        this.alertCtrl.create({
-          title: 'System Error',
-          subTitle: JSON.stringify(data),
-          buttons: ["Close"]
-        }).present();
+      this.alertCtrl.create({
+        title: 'System Error',
+        subTitle: JSON.stringify(data),
+        buttons: ["Close"]
+      }).present();
     });
   }
 
@@ -76,6 +76,12 @@ export class UserPage {
                   buttons: ["Close"]
                 }).present();
               }
+            }, (data: any) => {
+              this.alertCtrl.create({
+                title: 'System Error',
+                subTitle: JSON.stringify(data),
+                buttons: ["Close"]
+              }).present();
             });
           }
         },
@@ -111,6 +117,12 @@ export class UserPage {
                   buttons: ["Close"]
                 }).present();
               }
+            }, (data: any) => {
+              this.alertCtrl.create({
+                title: 'System Error',
+                subTitle: JSON.stringify(data),
+                buttons: ["Close"]
+              }).present();
             });
           }
         },
