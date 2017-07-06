@@ -6,6 +6,7 @@ ionic g page home
 ionic g page user
 ionic g page userDetails
 ionic g page addUser
+ionic g page editUser
 ionic g provider logger
 ionic g provider userHelper
 
