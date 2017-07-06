@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { UserHelper } from '../../providers/user-helper/user-helper';
 
@@ -15,7 +15,7 @@ export class EditUserPage {
   user: any;
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
     this.userHelper.getUser(this.navParams.data.samAccountName).then((data: any) => {
       this.user = data.content.user;
 
@@ -30,14 +30,23 @@ export class EditUserPage {
   }
 
   submit() {
-    this.userHelper.editUser(this.user.samAccountName, this.form).then((data) => {
-      this.toastCtrl.create({
-        message: 'User is edited',
-        duration: 1000,
-        position: 'middle'
-      }).present();
+    this.userHelper.editUser(this.user.samAccountName, this.form).then((data: any) => {
+      if (data.status === "true") {
+        this.toastCtrl.create({
+          message: 'User is edited',
+          duration: 1000,
+          position: 'middle'
+        }).present();
 
-      this.navCtrl.push('UserDetailsPage', this.user);
+        this.navCtrl.pop();
+      }
+      else {
+        this.alertCtrl.create({
+          title: JSON.stringify(data.errMsg),
+          subTitle: JSON.stringify(data.content.detailMessage),
+          buttons: ["Close"]
+        }).present();
+      }
     });
   }
 

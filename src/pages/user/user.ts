@@ -26,7 +26,22 @@ export class UserPage {
 
   getUsers() {
     this.userHelper.getUsers().then((data: any) => {
-      this.users = data.content.userList;
+      if (data.status === "true") {
+        this.users = data.content.userList;
+      }
+      else {
+        this.alertCtrl.create({
+          title: JSON.stringify(data.errMsg),
+          subTitle: JSON.stringify(data.content.detailMessage),
+          buttons: ["Close"]
+        }).present();
+      }
+    }, (data: any) => {
+        this.alertCtrl.create({
+          title: 'System Error',
+          subTitle: JSON.stringify(data),
+          buttons: ["Close"]
+        }).present();
     });
   }
 
@@ -46,14 +61,21 @@ export class UserPage {
         {
           text: 'Yes',
           handler: () => {
-            this.userHelper.deleteUser(user.samAccountName).then((data) => {
-              this.toastCtrl.create({
-                message: 'User is deleted',
-                duration: 1000,
-                position: 'middle'
-              }).present();
-
-              this.navCtrl.push('UserPage');
+            this.userHelper.deleteUser(user.samAccountName).then((data: any) => {
+              if (data.status === "true") {
+                this.toastCtrl.create({
+                  message: 'User is deleted',
+                  duration: 1000,
+                  position: 'middle'
+                }).present();
+              }
+              else {
+                this.alertCtrl.create({
+                  title: JSON.stringify(data.errMsg),
+                  subTitle: JSON.stringify(data.content.detailMessage),
+                  buttons: ["Close"]
+                }).present();
+              }
             });
           }
         },
@@ -74,12 +96,21 @@ export class UserPage {
         {
           text: 'Yes',
           handler: () => {
-            this.userHelper.resetPassword(user.samAccountName).then((data) => {
-              this.toastCtrl.create({
-                message: 'Password is reset',
-                duration: 1000,
-                position: 'middle'
-              }).present();
+            this.userHelper.resetPassword(user.samAccountName).then((data: any) => {
+              if (data.status === "true") {
+                this.toastCtrl.create({
+                  message: 'Password is reset',
+                  duration: 1000,
+                  position: 'middle'
+                }).present();
+              }
+              else {
+                this.alertCtrl.create({
+                  title: JSON.stringify(data.errMsg),
+                  subTitle: JSON.stringify(data.content.detailMessage),
+                  buttons: ["Close"]
+                }).present();
+              }
             });
           }
         },
