@@ -69,7 +69,7 @@ export class UserPage {
                   position: 'middle'
                 }).present();
 
-                this.getUsers();
+                this.ionViewDidEnter();
               }
               else {
                 this.alertCtrl.create({
