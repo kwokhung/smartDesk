@@ -15,71 +15,28 @@
   <ion-card *ngIf="user">
     <ion-card-content>
       <h2>{{user.name}}</h2>
-      <h3>{{user.path}}</h3>
     </ion-card-content>
-    <ion-list>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>objectClass</h2>
-        <h3>{{user.properties.objectClass}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>cn</h2>
-        <h3>{{user.properties.cn}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>description</h2>
-        <h3>{{user.properties.description}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>distinguishedName</h2>
-        <h3>{{user.properties.distinguishedName}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>whenCreated</h2>
-        <h3>{{user.properties.whenCreated}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>whenChanged</h2>
-        <h3>{{user.properties.whenChanged}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>memberOf</h2>
-        <h3>{{user.properties.memberOf}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>name</h2>
-        <h3>{{user.properties.name}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>badPwdCount</h2>
-        <h3>{{user.properties.badPwdCount}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>logonCount</h2>
-        <h3>{{user.properties.logonCount}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>sAMAccountName</h2>
-        <h3>{{user.properties.sAMAccountName}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>objectCategory</h2>
-        <h3>{{user.properties.objectCategory}}</h3>
-      </ion-item>
-    </ion-list>
   </ion-card>
+  <form *ngIf="user">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-sm-2>
+          <ion-label>SamAccountName</ion-label>
+        </ion-col>
+        <ion-col col-12 col-sm-10>
+          <ion-input type="text" value="{{this.user.properties.sAMAccountName}}" disabled></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 col-sm-2>
+          <ion-label>Description</ion-label>
+        </ion-col>
+        <ion-col col-12 col-sm-10>
+          <ion-input type="text" value="{{this.user.properties.description}}" disabled></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

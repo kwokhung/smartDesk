@@ -7,6 +7,11 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <ion-card *ngIf="user">
+    <ion-card-content>
+      <h2>{{user.name}}</h2>
+    </ion-card-content>
+  </ion-card>
   <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="user">
     <ion-grid>
       <ion-row>

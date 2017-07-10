@@ -11,6 +11,8 @@
     <ion-card-content>
       <h2>{{user.name}}</h2>
     </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="user">
     <ion-list>
       <ion-item>
         <ion-icon name="arrow-dropright" item-left></ion-icon>
