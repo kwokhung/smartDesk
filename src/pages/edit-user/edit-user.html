@@ -8,15 +8,33 @@
 </ion-header>
 <ion-content padding>
   <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="user">
-    <ion-item>
-      <ion-label floating>SamAccountName</ion-label>
-      <ion-input type="text" value="{{this.user.properties.sAMAccountName[0]}}" disabled></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-input type="text" formControlName="txtDescription"></ion-input>
-    </ion-item>
-    <p [hidden]="form.controls.txtDescription.valid" danger padding-left>Description is mandatory</p>
-    <button ion-button type="submit" [disabled]="!form.valid">Save</button>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 col-sm-2>
+          <ion-label>SamAccountName</ion-label>
+        </ion-col>
+        <ion-col col-12 col-sm-10>
+          <ion-input type="text" value="{{this.user.properties.sAMAccountName[0]}}" disabled></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 col-sm-2>
+          <ion-label>Description</ion-label>
+        </ion-col>
+        <ion-col col-12 col-sm-10>
+          <ion-input type="text" formControlName="txtDescription"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 offset-sm-2 col-sm-10>
+          <ion-label style="margin: 13px 8px;" color="danger" [hidden]="form.controls.txtDescription.valid">Description is mandatory</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-auto>
+          <button ion-button type="submit" [disabled]="!form.valid">Save</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
 </ion-content>
