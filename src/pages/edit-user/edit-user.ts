@@ -14,6 +14,7 @@ export class EditUserPage {
 
   user: any;
   form: FormGroup;
+  formSubmitted: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
   }
@@ -23,10 +24,14 @@ export class EditUserPage {
   }
 
   ionViewDidEnter() {
+    this.formSubmitted = false;
+
     this.getUser();
   }
 
   getUser() {
+    this.formSubmitted = true;
+
     this.userHelper.getUser(this.navParams.data.samAccountName).then((data: any) => {
       this.user = data.content.user;
 

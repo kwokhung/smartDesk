@@ -30,7 +30,7 @@
           <ion-input type="text" formControlName="txtDescription"></ion-input>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="!form.controls.txtDescription.valid && (form.controls.txtDescription.dirty || formSubmitted)">
         <ion-col col-12 offset-sm-2 col-sm-10>
           <ion-label style="margin: 13px 8px;" color="danger" [hidden]="form.controls.txtDescription.valid">Description is mandatory</ion-label>
         </ion-col>
