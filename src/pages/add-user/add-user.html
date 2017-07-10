@@ -17,7 +17,7 @@
           <ion-input type="text" formControlName="txtSamAccountName"></ion-input>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="!form.controls.txtSamAccountName.valid && (form.controls.txtSamAccountName.dirty || formSubmitted)">
         <ion-col col-12 offset-sm-2 col-sm-10>
           <ion-label style="margin: 13px 8px;" color="danger" [hidden]="form.controls.txtSamAccountName.valid">SamAccountName is mandatory</ion-label>
         </ion-col>

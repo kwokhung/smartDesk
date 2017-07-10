@@ -13,6 +13,7 @@ import { UserHelper } from '../../providers/user-helper/user-helper';
 export class AddUserPage {
 
   form: FormGroup;
+  formSubmitted: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public userHelper: UserHelper) {
     this.form = this.formBuilder.group({
@@ -24,7 +25,13 @@ export class AddUserPage {
     console.log('ionViewDidLoad AddUserPage');
   }
 
+  ionViewDidEnter() {
+    this.formSubmitted = false;
+  }
+
   submit() {
+    this.formSubmitted = true;
+
     this.userHelper.addUser(this.form.value.txtSamAccountName).then((data: any) => {
       if (data.status === "true") {
         this.toastCtrl.create({
@@ -53,7 +60,7 @@ export class AddUserPage {
 
   cancel(event: Event) {
     event.preventDefault();
-    
+
     this.navCtrl.pop();
   }
 
