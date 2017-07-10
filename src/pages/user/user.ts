@@ -68,6 +68,8 @@ export class UserPage {
                   duration: 1000,
                   position: 'middle'
                 }).present();
+
+                this.getUsers();
               }
               else {
                 this.alertCtrl.create({

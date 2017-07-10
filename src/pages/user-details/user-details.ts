@@ -60,6 +60,8 @@ export class UserDetailsPage {
                   duration: 1000,
                   position: 'middle'
                 }).present();
+
+                this.navCtrl.pop();
               }
               else {
                 this.alertCtrl.create({
