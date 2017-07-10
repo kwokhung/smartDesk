@@ -9,13 +9,14 @@
 <ion-content padding>
   <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="user">
     <ion-item>
-      <ion-label>SamAccountName</ion-label>
-      <ion-label>{{user.samAccountName}}</ion-label>
+      <ion-label floating>SamAccountName</ion-label>
+      <ion-input type="text" value="{{this.user.properties.sAMAccountName[0]}}" disabled></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Description</ion-label>
+      <ion-label floating>Description</ion-label>
       <ion-input type="text" formControlName="txtDescription"></ion-input>
     </ion-item>
+    <p [hidden]="form.controls.txtDescription.valid" danger padding-left>Description is mandatory</p>
     <button ion-button type="submit" [disabled]="!form.valid">Save</button>
   </form>
 </ion-content>
