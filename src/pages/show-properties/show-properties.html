@@ -3,19 +3,13 @@
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>User Details Page</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="showProperties(user)">
-        <ion-icon name="options"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title>User Properties Page</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
   <ion-card *ngIf="user">
     <ion-card-content>
       <h2>{{user.name}}</h2>
-      <h3>{{user.path}}</h3>
     </ion-card-content>
     <ion-list>
       <ion-item>
@@ -81,23 +75,3 @@
     </ion-list>
   </ion-card>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-buttons right>
-      <button ion-button color="danger" (click)="deleteUser(user)">
-        <ion-icon name="trash"></ion-icon>
-        <span>Delete</span>
-      </button>
-    </ion-buttons>
-    <ion-buttons left>
-      <button ion-button color="primary" (click)="resetPassword(user)">
-        <ion-icon name="key"></ion-icon>
-        <span>Reset Password</span>
-      </button>
-      <button ion-button color="primary" (click)="editUser(user)">
-        <ion-icon name="create"></ion-icon>
-        <span>Edit</span>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>

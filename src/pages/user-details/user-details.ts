@@ -131,4 +131,8 @@ export class UserDetailsPage {
     this.navCtrl.push('EditUserPage', user);
   }
 
+  showProperties(user) {
+    this.navCtrl.push('ShowPropertiesPage', user);
+  }
+
 }
