@@ -51,4 +51,10 @@ export class AddUserPage {
     });
   }
 
+  cancel(event: Event) {
+    event.preventDefault();
+    
+    this.navCtrl.pop();
+  }
+
 }

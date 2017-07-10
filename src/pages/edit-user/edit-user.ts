@@ -63,4 +63,10 @@ export class EditUserPage {
     });
   }
 
+  cancel(event: Event) {
+    event.preventDefault();
+
+    this.navCtrl.pop();
+  }
+
 }
