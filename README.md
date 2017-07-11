@@ -16,6 +16,9 @@ npm install --save-dev typescript @ionic/app-scripts @ionic/cli-plugin-ionic-ang
 
 ionic cordova platform add android
 ionic cordova build android --prod --release
+ionic login
+ionic link
+ionic upload
 
 phonegap remote login
 phonegap remote build android
