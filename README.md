@@ -14,6 +14,9 @@ ionic g provider userHelper
 npm install -g typescript cordova phonegap ionic
 npm install --save-dev typescript @ionic/app-scripts @ionic/cli-plugin-ionic-angular @ionic/cli-plugin-cordova
 
+ionic info
+ionic serve
+
 ionic cordova platform add android
 ionic cordova build android --prod --release
 ionic login
