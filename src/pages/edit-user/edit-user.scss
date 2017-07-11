@@ -1,5 +1,9 @@
 page-edit-user {
-    ion-input, ion-select, ion-textarea {
-        border: 1px solid;
+    ion-card-content {
+        background-color: map-get($colors, primary);
+        h2 {
+            text-align: center !important;
+            color: white !important;
+        }
     }
 }

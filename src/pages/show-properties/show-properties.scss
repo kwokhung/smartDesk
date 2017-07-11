@@ -1,3 +1,9 @@
 page-show-properties {
-
+    ion-card-content {
+        background-color: map-get($colors, primary);
+        h2 {
+            text-align: center !important;
+            color: white !important;
+        }
+    }
 }
