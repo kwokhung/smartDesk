@@ -17,26 +17,16 @@
       <h2>{{user.name}}</h2>
     </ion-card-content>
   </ion-card>
-  <form *ngIf="user">
-    <ion-grid>
-      <ion-row>
-        <ion-col col-12 col-sm-2>
-          <ion-label>SamAccountName</ion-label>
-        </ion-col>
-        <ion-col col-12 col-sm-10>
-          <ion-input type="text" value="{{this.user.properties.sAMAccountName}}" disabled></ion-input>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12 col-sm-2>
-          <ion-label>Description</ion-label>
-        </ion-col>
-        <ion-col col-12 col-sm-10>
-          <ion-input type="text" value="{{this.user.properties.description}}" disabled></ion-input>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+  <ion-list text-wrap *ngIf="user">
+    <ion-item>
+      <h2>SamAccountName</h2>
+      <p>{{user.properties.sAMAccountName}}</p>
+    </ion-item>
+    <ion-item text-wrap>
+      <h2>Description</h2>
+      <p>{{user.properties.description}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
