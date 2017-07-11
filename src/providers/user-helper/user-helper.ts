@@ -5,12 +5,15 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 @Injectable()
 export class UserHelper {
 
+  //apiHost: string = 'http://localhost:5400';
+  apiHost: string = 'http://172.21.73.35:8184/home';
+
   constructor(public http: Http) {
   }
 
   getUsers() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:5400/api/ADService/User/List', new RequestOptions({
+      this.http.get(this.apiHost + '/api/ADService/User/List', new RequestOptions({
         headers: new Headers({
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
@@ -25,7 +28,7 @@ export class UserHelper {
 
   getUser(samAccountName: string) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:5400/api/ADService/User/Get', {
+      this.http.post(this.apiHost + '/api/ADService/User/Get', {
         txtSamAccountName: samAccountName
       }, new RequestOptions({
         headers: new Headers({
@@ -42,7 +45,7 @@ export class UserHelper {
 
   deleteUser(samAccountName: string) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:5400/api/ADService/User/Delete', {
+      this.http.post(this.apiHost + '/api/ADService/User/Delete', {
         txtSamAccountName: samAccountName
       }, new RequestOptions({
         headers: new Headers({
@@ -59,7 +62,7 @@ export class UserHelper {
 
   addUser(samAccountName: string) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:5400/api/ADService/User/Add', {
+      this.http.post(this.apiHost + '/api/ADService/User/Add', {
         txtSamAccountName: samAccountName
       }, new RequestOptions({
         headers: new Headers({
@@ -76,7 +79,7 @@ export class UserHelper {
 
   resetPassword(samAccountName: string) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:5400/api/ADService/User/ResetPassword', {
+      this.http.post(this.apiHost + '/api/ADService/User/ResetPassword', {
         txtSamAccountName: samAccountName
       }, new RequestOptions({
         headers: new Headers({
@@ -93,7 +96,7 @@ export class UserHelper {
 
   editUser(samAccountName: string, form: FormGroup) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:5400/api/ADService/User/Edit', {
+      this.http.post(this.apiHost + '/api/ADService/User/Edit', {
         txtSamAccountName: samAccountName,
         txtDescription: form.value.txtDescription
       }, new RequestOptions({
