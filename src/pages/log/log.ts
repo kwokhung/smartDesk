@@ -1,24 +1,34 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Logger } from '../../providers/logger/logger';
 
-/**
- * Generated class for the LogPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+@IonicPage({
+  name: 'LogPage'
+})
 @Component({
   selector: 'page-log',
   templateUrl: 'log.html',
 })
 export class LogPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  logs: Array<string> = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public logger: Logger) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogPage');
+  }
+
+  ionViewDidEnter() {
+    this.getLogs();
+  }
+
+  getLogs() {
+    this.logger.getLogs().then((data) => {
+      this.logs = data.slice(0);
+      this.logs = this.logs.reverse();
+    });
   }
 
 }

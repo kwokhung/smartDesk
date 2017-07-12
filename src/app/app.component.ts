@@ -27,8 +27,9 @@ export class MyApp {
     this.appMenuItems = [
       { title: 'Home', component: 'HomePage', icon: 'home' },
       { title: 'User', component: 'UserPage', icon: 'people' },
-      { title: 'Login', component: 'LoginPage', icon: 'key' },
-      { title: 'Register', component: 'RegisterPage', icon: 'key' }
+      { title: 'Login', component: 'LoginPage', icon: 'log-in' },
+      { title: 'Register', component: 'RegisterPage', icon: 'key' },
+      { title: 'Log', component: 'LogPage', icon: 'information' }
     ];
   }
 
