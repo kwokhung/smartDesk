@@ -15,7 +15,7 @@ export class LoginPage {
   loading: Loading;
   registerCredentials = { email: '', password: '' };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public auth: AuthService, public logger: Logger) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public authService: AuthService, public logger: Logger) {
     logger.addLog('LoginPage');
   }
 
@@ -29,7 +29,7 @@ export class LoginPage {
 
   public login() {
     this.showLoading()
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
+    this.authService.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         this.navCtrl.setRoot('HomePage');
       } else {
@@ -59,5 +59,5 @@ export class LoginPage {
     });
     alert.present(prompt);
   }
-  
+
 }
