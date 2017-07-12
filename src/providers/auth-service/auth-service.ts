@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 export class User {
+
   name: string;
   email: string;
 
@@ -10,11 +11,12 @@ export class User {
     this.name = name;
     this.email = email;
   }
+  
 }
 
 @Injectable()
 export class AuthService {
-  
+
   currentUser: User;
 
   public login(credentials) {

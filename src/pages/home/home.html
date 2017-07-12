@@ -3,10 +3,15 @@
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Home Page</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content class="home" padding>
   <h3>Welcome inside, {{username}}!</h3>
-  Your Email is: {{email}}
+  <h2>Your Email is: {{email}}</h2>
 </ion-content>
