@@ -10,6 +10,7 @@ ionic g page editUser
 ionic g page showProperties
 ionic g page login
 ionic g page register
+ionic g page log
 ionic g provider logger
 ionic g provider userHelper
 ionic g provider authService
