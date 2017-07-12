@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { UserHelper } from '../../providers/user-helper/user-helper';
 
 export class User {
 
@@ -19,15 +20,26 @@ export class AuthService {
 
   currentUser: User;
 
+  constructor(public userHelper: UserHelper) {
+  }
+
   public login(credentials) {
     if (credentials.name === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        let access = (credentials.password === "password" && credentials.name === "name");
-        this.currentUser = new User('dummy', 'dummy@masonhk.com');
-        observer.next(access);
-        observer.complete();
+        this.userHelper.validateUser(credentials.name, credentials.password).then((data: any) => {
+          if (data.status === "true") {
+            this.currentUser = new User('dummy', 'dummy@masonhk.com');
+            observer.next(data.content.isValid);
+            observer.complete();
+          }
+          else {
+            observer.error(JSON.stringify(data.content.detailMessage));
+          }
+        }, (data: any) => {
+          observer.error(JSON.stringify(data));
+        });
       });
     }
   }

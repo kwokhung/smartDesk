@@ -112,4 +112,22 @@ export class UserHelper {
     });
   }
 
+  validateUser(samAccountName: string, password: string) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.apiHost + '/api/ADService/User/Validate', {
+        txtSamAccountName: samAccountName,
+        txtPassword: password
+      }, new RequestOptions({
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        })
+      })).subscribe((data: Response) => {
+        resolve(data.json());
+      }, (data: any) => {
+        reject(data);
+      });
+    });
+  }
+
 }
