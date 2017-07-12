@@ -45,4 +45,15 @@ export class ShowPropertiesPage {
     });
   }
 
+  toggleWrap(item) {
+    let h3 = item._elementRef.nativeElement.querySelector('h3');
+
+    if (h3.style.whiteSpace === 'normal') {
+      h3.style.whiteSpace = 'nowrap';
+    }
+    else {
+      h3.style.whiteSpace = 'normal';
+    }
+  }
+
 }

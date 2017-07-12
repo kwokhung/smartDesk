@@ -12,68 +12,66 @@
       <h2>{{user.name}}</h2>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngIf="user">
-    <ion-list>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>objectClass</h2>
-        <h3>{{user.properties.objectClass}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>cn</h2>
-        <h3>{{user.properties.cn}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>description</h2>
-        <h3>{{user.properties.description}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>distinguishedName</h2>
-        <h3>{{user.properties.distinguishedName}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>whenCreated</h2>
-        <h3>{{user.properties.whenCreated}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>whenChanged</h2>
-        <h3>{{user.properties.whenChanged}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>memberOf</h2>
-        <h3>{{user.properties.memberOf}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>name</h2>
-        <h3>{{user.properties.name}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>badPwdCount</h2>
-        <h3>{{user.properties.badPwdCount}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>logonCount</h2>
-        <h3>{{user.properties.logonCount}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>sAMAccountName</h2>
-        <h3>{{user.properties.sAMAccountName}}</h3>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="arrow-dropright" item-left></ion-icon>
-        <h2>objectCategory</h2>
-        <h3>{{user.properties.objectCategory}}</h3>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+  <ion-list *ngIf="user">
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>objectClass</h2>
+      <h3>{{user.properties.objectClass}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>cn</h2>
+      <h3>{{user.properties.cn}}</h3>
+    </ion-item>
+    <button ion-item (click)="toggleWrap(description)" #description>
+      <ion-icon [name]="description._elementRef.nativeElement.querySelector('h3') !== null && description._elementRef.nativeElement.querySelector('h3').style.whiteSpace === 'normal' ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
+      <h2>description</h2>
+      <h3>{{user.properties.description}}</h3>
+    </button>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>distinguishedName</h2>
+      <h3>{{user.properties.distinguishedName}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>whenCreated</h2>
+      <h3>{{user.properties.whenCreated}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>whenChanged</h2>
+      <h3>{{user.properties.whenChanged}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>memberOf</h2>
+      <h3>{{user.properties.memberOf}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>name</h2>
+      <h3>{{user.properties.name}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>badPwdCount</h2>
+      <h3>{{user.properties.badPwdCount}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>logonCount</h2>
+      <h3>{{user.properties.logonCount}}</h3>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      <h2>sAMAccountName</h2>
+      <h3>{{user.properties.sAMAccountName}}</h3>
+    </ion-item>
+    <button ion-item (click)="toggleWrap(objectCategory)" #objectCategory>
+      <ion-icon [name]="objectCategory._elementRef.nativeElement.querySelector('h3') !== null && objectCategory._elementRef.nativeElement.querySelector('h3').style.whiteSpace === 'normal' ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
+      <h2>objectCategory</h2>
+      <h3>{{user.properties.objectCategory}}</h3>
+    </button>
+  </ion-list>
 </ion-content>
