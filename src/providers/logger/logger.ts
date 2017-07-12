@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class LoggerProvider {
+export class Logger {
 
   logs: Array<string>;
 

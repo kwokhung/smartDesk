@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { LoggerProvider } from '../providers/logger/logger';
+import { Logger } from '../providers/logger/logger';
 import { UserHelper } from '../providers/user-helper/user-helper';
 import { AuthService } from '../providers/auth-service/auth-service';
 
@@ -27,7 +27,7 @@ import { AuthService } from '../providers/auth-service/auth-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LoggerProvider,
+    Logger,
     UserHelper,
     AuthService
   ]
