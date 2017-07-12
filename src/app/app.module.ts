@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoggerProvider } from '../providers/logger/logger';
 import { UserHelper } from '../providers/user-helper/user-helper';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { AuthService } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoggerProvider,
     UserHelper,
-    AuthServiceProvider
+    AuthService
   ]
 })
 export class AppModule {}
