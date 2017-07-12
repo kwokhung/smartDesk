@@ -11,7 +11,7 @@ export class User {
     this.name = name;
     this.email = email;
   }
-  
+
 }
 
 @Injectable()
@@ -20,13 +20,12 @@ export class AuthService {
   currentUser: User;
 
   public login(credentials) {
-    if (credentials.email === null || credentials.password === null) {
+    if (credentials.name === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        // At this point make a request to your backend to make a real check!
-        let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('Simon', 'saimon@devdactic.com');
+        let access = (credentials.password === "password" && credentials.name === "name");
+        this.currentUser = new User('dummy', 'dummy@masonhk.com');
         observer.next(access);
         observer.complete();
       });
@@ -34,10 +33,9 @@ export class AuthService {
   }
 
   public register(credentials) {
-    if (credentials.email === null || credentials.password === null) {
+    if (credentials.name === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
-      // At this point store the credentials to your backend!
       return Observable.create(observer => {
         observer.next(true);
         observer.complete();

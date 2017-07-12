@@ -13,7 +13,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 export class LoginPage {
 
   loading: Loading;
-  registerCredentials = { email: '', password: '' };
+  registerCredentials = { name: '', password: '' };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public authService: AuthService, public logger: Logger) {
     logger.addLog('LoginPage');
@@ -25,22 +25,22 @@ export class LoginPage {
 
   public createAccount(event: Event) {
     event.preventDefault();
-    
+
     this.navCtrl.push('RegisterPage');
   }
 
   public login() {
-    this.showLoading()
+    this.showLoading();
+
     this.authService.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         this.navCtrl.setRoot('HomePage');
       } else {
         this.showError("Access Denied");
       }
-    },
-      error => {
-        this.showError(error);
-      });
+    }, error => {
+      this.showError(error);
+    });
   }
 
   showLoading() {
@@ -48,18 +48,18 @@ export class LoginPage {
       content: 'Please wait...',
       dismissOnPageChange: true
     });
+
     this.loading.present();
   }
 
   showError(text) {
     this.loading.dismiss();
 
-    let alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: 'Fail',
       subTitle: text,
       buttons: ['OK']
-    });
-    alert.present(prompt);
+    }).present(prompt);
   }
 
 }
