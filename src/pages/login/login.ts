@@ -23,7 +23,9 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  public createAccount() {
+  public createAccount(event: Event) {
+    event.preventDefault();
+    
     this.navCtrl.push('RegisterPage');
   }
 
