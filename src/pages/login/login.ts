@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoggerProvider } from '../../providers/logger/logger';
 
 @IonicPage({
   name: 'LoginPage'
@@ -10,7 +11,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public logger: LoggerProvider) {
+    logger.addLog('LoginPage');
   }
 
   ionViewDidLoad() {
