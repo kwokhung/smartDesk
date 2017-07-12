@@ -6,10 +6,7 @@
     <ion-title>Home Page</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  <ion-list>
-    <button ion-item *ngFor="let log of logs" (click)="openLogDetails(log)">
-      <p>{{log}}</p>
-    </button>
-  </ion-list>
+<ion-content class="home" padding>
+  <h3>Welcome inside, {{username}}!</h3>
+  Your Email is: {{email}}
 </ion-content>

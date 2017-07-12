@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Logger } from '../../providers/logger/logger';
+import { AuthService } from '../../providers/auth-service/auth-service';
 
 @IonicPage({
   name: 'HomePage'
@@ -11,32 +12,23 @@ import { Logger } from '../../providers/logger/logger';
 })
 export class HomePage {
 
-  logs: Array<string> = [];
+  username = '';
+  email = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public logger: Logger) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public authService: AuthService, public logger: Logger) {
+    let info = this.authService.getUserInfo();
+    this.username = info['name'];
+    this.email = info['email'];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
 
-  ionViewDidEnter() {
-    this.getLogs();
-  }
-
-  getLogs() {
-    this.logger.getLogs().then((data) => {
-      this.logs = data.slice(0);
-      this.logs = this.logs.reverse();
+  public logout() {
+    this.authService.logout().subscribe(succ => {
+      this.navCtrl.setRoot('LoginPage')
     });
-  }
-
-  openLogDetails(log) {
-    this.alertCtrl.create({
-      title: "Log Details",
-      subTitle: JSON.stringify(log),
-      buttons: ["Close"]
-    }).present();
   }
 
 }

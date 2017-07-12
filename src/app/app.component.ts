@@ -15,7 +15,8 @@ export interface MenuItem {
 export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = 'HomePage';
+  //rootPage: any = 'HomePage';
+  rootPage: any = 'LoginPage';
   appMenuItems: Array<MenuItem>;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
