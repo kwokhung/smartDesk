@@ -11,6 +11,7 @@ ionic g page showProperties
 ionic g page login
 ionic g provider logger
 ionic g provider userHelper
+ionic g provider authService
 
 npm install -g typescript cordova phonegap ionic
 npm install --save-dev typescript @ionic/app-scripts @ionic/cli-plugin-ionic-angular @ionic/cli-plugin-cordova
