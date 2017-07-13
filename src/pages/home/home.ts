@@ -12,13 +12,14 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 })
 export class HomePage {
 
+  user: any;
+
   username = '';
   email = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public authService: AuthService, public logger: Logger) {
-    let info = this.authService.getUserInfo();
-    this.username = info['name'];
-    this.email = info['email'];
+    this.user = this.authService.getUserInfo();
+
   }
 
   ionViewDidLoad() {

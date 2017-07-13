@@ -12,6 +12,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="home" padding>
-  <h3>Welcome inside, {{username}}!</h3>
-  <h2>Your Email is: {{email}}</h2>
+  <ion-card *ngIf="user">
+    <ion-card-content>
+      <h2>Welcome inside, {{user.name}}!</h2>
+      <h3>Your Email is: {{user.email}}</h3>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
