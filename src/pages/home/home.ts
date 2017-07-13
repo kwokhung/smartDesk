@@ -14,9 +14,6 @@ export class HomePage {
 
   user: any;
 
-  username = '';
-  email = '';
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public authService: AuthService, public logger: Logger) {
     this.user = this.authService.getUserInfo();
 

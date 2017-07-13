@@ -6,11 +6,9 @@ import { UserHelper } from '../../providers/user-helper/user-helper';
 export class User {
 
   name: string;
-  email: string;
 
-  constructor(name: string, email: string) {
+  constructor(name: string) {
     this.name = name;
-    this.email = email;
   }
 
 }
@@ -30,7 +28,7 @@ export class AuthService {
       return Observable.create(observer => {
         this.userHelper.validateUser(credentials.name, credentials.password).then((data: any) => {
           if (data.status === "true") {
-            this.currentUser = new User('dummy', 'dummy@masonhk.com');
+            this.currentUser = new User(credentials.name);
             observer.next(data.content.isValid);
             observer.complete();
           }
@@ -51,7 +49,6 @@ export class AuthService {
       return Observable.create(observer => {
         this.userHelper.addUser(credentials.name).then((data: any) => {
           if (data.status === "true") {
-            this.currentUser = new User('dummy', 'dummy@masonhk.com');
             observer.next(true);
             observer.complete();
           }
