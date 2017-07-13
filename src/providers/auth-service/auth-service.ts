@@ -49,7 +49,7 @@ export class AuthService {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        this.userHelper.validateUser(credentials.name, credentials.password).then((data: any) => {
+        this.userHelper.addUser(credentials.name).then((data: any) => {
           if (data.status === "true") {
             this.currentUser = new User('dummy', 'dummy@masonhk.com');
             observer.next(true);
