@@ -49,8 +49,18 @@ export class AuthService {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        observer.next(true);
-        observer.complete();
+        this.userHelper.validateUser(credentials.name, credentials.password).then((data: any) => {
+          if (data.status === "true") {
+            this.currentUser = new User('dummy', 'dummy@masonhk.com');
+            observer.next(true);
+            observer.complete();
+          }
+          else {
+            observer.error(JSON.stringify(data.content.detailMessage));
+          }
+        }, (data: any) => {
+          observer.error(JSON.stringify(data));
+        });
       });
     }
   }

@@ -12,7 +12,7 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 export class RegisterPage {
 
   createSuccess = false;
-  registerCredentials = { email: '', password: '' };
+  registerCredentials = { name: '', password: '' };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public authService: AuthService) {
   }
