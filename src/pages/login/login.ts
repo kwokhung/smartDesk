@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Logger } from '../../providers/logger/logger';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
@@ -13,20 +14,35 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 export class LoginPage {
 
   loading: Loading;
-  registerCredentials = { name: '', password: '' };
+  form: FormGroup;
+  formSubmitted: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public authService: AuthService, public logger: Logger) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public formBuilder: FormBuilder, public authService: AuthService, public logger: Logger) {
     logger.addLog('LoginPage');
+
+    this.form = this.formBuilder.group({
+      txtName: ['', Validators.required],
+      txtPassword: ['', Validators.required]
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  ionViewDidEnter() {
+    this.formSubmitted = false;
+  }
+
   public submit() {
+    this.formSubmitted = true;
+
     this.showLoading();
 
-    this.authService.login(this.registerCredentials).subscribe(allowed => {
+    this.authService.login({
+      name: this.form.value.txtName,
+      password: this.form.value.txtPassword
+    }).subscribe(allowed => {
       if (allowed) {
         this.navCtrl.setRoot('HomePage');
       } else {
