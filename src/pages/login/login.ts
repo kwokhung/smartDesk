@@ -23,13 +23,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  public createAccount(event: Event) {
-    event.preventDefault();
-
-    this.navCtrl.push('RegisterPage');
-  }
-
-  public login() {
+  public submit() {
     this.showLoading();
 
     this.authService.login(this.registerCredentials).subscribe(allowed => {
@@ -41,6 +35,12 @@ export class LoginPage {
     }, error => {
       this.showError(error);
     });
+  }
+
+  public createAccount(event: Event) {
+    event.preventDefault();
+
+    this.navCtrl.push('RegisterPage');
   }
 
   showLoading() {
