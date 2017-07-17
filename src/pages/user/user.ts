@@ -141,4 +141,10 @@ export class UserPage {
     this.navCtrl.push('EditUserPage', user);
   }
 
+  doRefresh(refresher) {
+    this.getUsers();
+    
+    refresher.complete();
+  }
+
 }

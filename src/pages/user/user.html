@@ -12,8 +12,16 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list>
-    <ion-item-sliding *ngFor="let user of users" #item>
+    <ion-item-sliding *ngFor="let user of users">
       <button ion-item (click)="openUserDetails(user)">
         <p>{{user.name}}</p>
       </button>
