@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../providers/auth-service/auth-service';
 
 @IonicPage({
@@ -12,17 +13,31 @@ import { AuthService } from '../../providers/auth-service/auth-service';
 export class RegisterPage {
 
   createSuccess = false;
-  registerCredentials = { name: '', password: '' };
+  form: FormGroup;
+  formSubmitted: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public authService: AuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public formBuilder: FormBuilder, public authService: AuthService) {
+    this.form = this.formBuilder.group({
+      txtName: ['', Validators.required],
+      txtPassword: ['', Validators.required]
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  public register() {
-    this.authService.register(this.registerCredentials).subscribe(success => {
+  ionViewDidEnter() {
+    this.formSubmitted = false;
+  }
+
+  public submit() {
+    this.formSubmitted = true;
+
+    this.authService.register({
+      name: this.form.value.txtName,
+      password: this.form.value.txtPassword
+    }).subscribe(success => {
       if (success) {
         this.createSuccess = true;
         this.showPopup("Success", "Account created.");

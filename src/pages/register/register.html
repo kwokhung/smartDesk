@@ -6,26 +6,42 @@
     <ion-title>Register Page</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content class="login-content" padding>
-  <div class="login-box">
-    <form (ngSubmit)="register()" #registerForm="ngForm">
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <ion-grid>
       <ion-row>
-        <ion-col>
-          <ion-list inset>
-            <ion-item>
-              <ion-input type="text" placeholder="Name" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
-            </ion-item>
-          </ion-list>
+        <ion-col col-12 col-sm-2>
+          <ion-label>Name</ion-label>
+        </ion-col>
+        <ion-col col-12 col-sm-10>
+          <ion-input type="text" placeholder="Name" name="name" formControlName="txtName"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!form.controls.txtName.valid && (form.controls.txtName.dirty || formSubmitted)">
+        <ion-col col-12 offset-sm-2 col-sm-10>
+          <ion-label style="margin: 13px 8px;" color="danger" [hidden]="form.controls.txtName.valid">Name is mandatory</ion-label>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        <ion-col col-12 col-sm-2>
+          <ion-label>Password</ion-label>
+        </ion-col>
+        <ion-col col-12 col-sm-10>
+          <ion-input type="password" placeholder="Password" name="password" formControlName="txtPassword"></ion-input>
         </ion-col>
       </ion-row>
-    </form>
-  </div>
+      <ion-row *ngIf="!form.controls.txtPassword.valid && (form.controls.txtPassword.dirty || formSubmitted)">
+        <ion-col col-12 offset-sm-2 col-sm-10>
+          <ion-label style="margin: 13px 8px;" color="danger" [hidden]="form.controls.txtPassword.valid">Password is mandatory</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-auto>
+          <ion-buttons>
+            <button ion-button type="submit" [disabled]="!form.valid">Register</button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
