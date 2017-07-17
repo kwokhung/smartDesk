@@ -143,7 +143,7 @@ export class UserPage {
 
   doRefresh(refresher) {
     this.getUsers();
-    
+
     refresher.complete();
   }
 
