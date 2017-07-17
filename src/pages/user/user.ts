@@ -147,4 +147,15 @@ export class UserPage {
     refresher.complete();
   }
 
+  doInfinite(infiniteScroll) {
+    /*setTimeout(() => {
+      for (let i = 0; i < 5; i++) {
+        this.users.push({ name: 'title' + this.users.length });
+      }
+
+      infiniteScroll.complete();
+    }, 500);*/
+    infiniteScroll.complete();
+  }
+
 }
