@@ -8,17 +8,53 @@ export class UserHelper {
   //apiHost: string = 'http://localhost:5400';
   apiHost: string = 'http://172.21.73.35:8184/home';
 
+  itemsPerPage = 15;
+  requestedPage = 0;
+  orderBy = 'name';
+  direction = 'asc';
+
+  userList: any;
+  pages: any;
+  totalItemCount: any;
+  totalPageCount: any;
+
   constructor(public http: Http) {
   }
 
-  getUsers() {
+  getUsers(mode: string) {
+    this.requestedPage = 0;
+
+    if (mode === 'next') {
+      for (let i = 0; i < this.pages.length; i++) {
+        if (this.pages[i].LinkText === '»') {
+          if (this.pages[i].IsRequestedPage) {
+            return Promise.resolve({
+              status: 'true',
+              content:
+              {
+                userList: []
+              }
+            });
+          }
+          else {
+            this.requestedPage = this.pages[i].LinkPage;
+          }
+        }
+      }
+    }
+
     return new Promise((resolve, reject) => {
-      this.http.get(this.apiHost + '/api/ADService/User/List', new RequestOptions({
+      this.http.get(this.apiHost + `/api/ADService/User/PagedList?txtItemsPerPage=${this.itemsPerPage}&txtRequestedPage=${this.requestedPage}&txtOrderBy=${this.orderBy}&txtDirection=${this.direction}`, new RequestOptions({
         headers: new Headers({
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         })
       })).subscribe((data: Response) => {
+        this.userList = data.json().content.userList;
+        this.pages = data.json().content.pages;
+        this.totalItemCount = data.json().content.totalItemCount;
+        this.totalPageCount = data.json().content.totalPageCount;
+
         resolve(data.json());
       }, (data: any) => {
         reject(data);

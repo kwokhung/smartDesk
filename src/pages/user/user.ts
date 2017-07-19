@@ -21,13 +21,20 @@ export class UserPage {
   }
 
   ionViewDidEnter() {
-    this.getUsers();
+    this.getUsers('first');
   }
 
-  getUsers() {
-    this.userHelper.getUsers().then((data: any) => {
+  getUsers(mode: string) {
+    this.userHelper.getUsers(mode).then((data: any) => {
       if (data.status === "true") {
-        this.users = data.content.userList;
+        if (mode === 'first') {
+          this.users = data.content.userList.slice(0);
+        }
+        else if (mode === 'next') {
+          for (let i = 0; i < data.content.userList.length; i++) {
+            this.users.push(data.content.userList[i]);
+          }
+        }
       }
       else {
         this.alertCtrl.create({
@@ -142,20 +149,24 @@ export class UserPage {
   }
 
   doRefresh(refresher) {
-    this.getUsers();
+    this.getUsers('first');
 
     refresher.complete();
   }
 
   doInfinite(infiniteScroll) {
+    setTimeout(() => {
+      this.getUsers('next');
+
+      infiniteScroll.complete();
+    }, 2000);
     /*setTimeout(() => {
       for (let i = 0; i < 5; i++) {
         this.users.push({ name: 'title' + this.users.length });
       }
 
       infiniteScroll.complete();
-    }, 500);*/
-    infiniteScroll.complete();
+    }, 2000);*/
   }
 
 }
