@@ -32,7 +32,7 @@ export class UserPage {
         }
         else if (mode === 'next') {
           if (data.content.userList.length === 0) {
-            infiniteScroll.enable(false);
+            //infiniteScroll.enable(false);
           }
           else {
             for (let user of data.content.userList) {

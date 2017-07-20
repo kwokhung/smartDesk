@@ -25,6 +25,22 @@ export class UserHelper {
     this.requestedPage = 0;
 
     if (mode === 'next') {
+      /*for (let page of this.pages) {
+        if (page.LinkText === '»') {
+          if (page.IsRequestedPage) {
+            return Promise.resolve({
+              status: 'true',
+              content:
+              {
+                userList: []
+              }
+            });
+          }
+          else {
+            this.requestedPage = page.LinkPage;
+          }
+        }
+      }*/
       for (let i = 0; i < this.pages.length; i++) {
         if (this.pages[i].LinkText === '»') {
           if (this.pages[i].IsRequestedPage) {
