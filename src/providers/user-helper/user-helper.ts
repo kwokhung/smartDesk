@@ -21,10 +21,10 @@ export class UserHelper {
   constructor(public http: Http) {
   }
 
-  getUsers(mode: string) {
+  getUsers(infiniteScroll: any) {
     this.requestedPage = 0;
 
-    if (mode === 'next') {
+    if (infiniteScroll !== null) {
       /*for (let page of this.pages) {
         if (page.LinkText === '»') {
           if (page.IsRequestedPage) {
@@ -44,6 +44,8 @@ export class UserHelper {
       for (let i = 0; i < this.pages.length; i++) {
         if (this.pages[i].LinkText === '»') {
           if (this.pages[i].IsRequestedPage) {
+            infiniteScroll.enable(false);
+            
             return Promise.resolve({
               status: 'true',
               content:
@@ -54,6 +56,8 @@ export class UserHelper {
           }
           else {
             this.requestedPage = this.pages[i].LinkPage;
+
+            break;
           }
         }
       }

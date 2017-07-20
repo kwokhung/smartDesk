@@ -12,6 +12,7 @@ import { UserHelper } from '../../providers/user-helper/user-helper';
 export class UserPage {
 
   users: Array<any> = [];
+  infiniteScroll: any = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController, public userHelper: UserHelper) {
   }
@@ -21,20 +22,17 @@ export class UserPage {
   }
 
   ionViewDidEnter() {
-    this.getUsers('first', null);
+    this.getUsers(null);
   }
 
-  getUsers(mode: string, infiniteScroll: any) {
-    this.userHelper.getUsers(mode).then((data: any) => {
+  getUsers(infiniteScroll: any) {
+    this.userHelper.getUsers(infiniteScroll).then((data: any) => {
       if (data.status === "true") {
-        if (mode === 'first') {
+        if (infiniteScroll === null) {
           this.users = data.content.userList.slice(0);
         }
-        else if (mode === 'next') {
-          if (data.content.userList.length === 0) {
-            //infiniteScroll.enable(false);
-          }
-          else {
+        else if (infiniteScroll !== null) {
+          if (data.content.userList.length !== 0) {
             for (let user of data.content.userList) {
               this.users.push(user);
             }
@@ -154,27 +152,23 @@ export class UserPage {
   }
 
   doRefresh(refresher) {
-    this.getUsers('first', null);
+    if (this.infiniteScroll !== null) {
+      this.infiniteScroll.enable(true);
+    }
+
+    this.getUsers(null);
 
     refresher.complete();
   }
 
   doInfinite(infiniteScroll) {
+    this.infiniteScroll = infiniteScroll;
+
     setTimeout(() => {
-      this.getUsers('next', infiniteScroll);
+      this.getUsers(infiniteScroll);
 
       infiniteScroll.complete();
     }, 500);
   }
-
-  /*doInfinite(): Promise<any> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        this.getUsers('next');
-
-        resolve();
-      }, 500);
-    })
-  }*/
 
 }
