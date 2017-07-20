@@ -21,18 +21,23 @@ export class UserPage {
   }
 
   ionViewDidEnter() {
-    this.getUsers('first');
+    this.getUsers('first', null);
   }
 
-  getUsers(mode: string) {
+  getUsers(mode: string, infiniteScroll: any) {
     this.userHelper.getUsers(mode).then((data: any) => {
       if (data.status === "true") {
         if (mode === 'first') {
           this.users = data.content.userList.slice(0);
         }
         else if (mode === 'next') {
-          for (let i = 0; i < data.content.userList.length; i++) {
-            this.users.push(data.content.userList[i]);
+          if (data.content.userList.length === 0) {
+            infiniteScroll.enable(false);
+          }
+          else {
+            for (let user of data.content.userList) {
+              this.users.push(user);
+            }
           }
         }
       }
@@ -149,24 +154,27 @@ export class UserPage {
   }
 
   doRefresh(refresher) {
-    this.getUsers('first');
+    this.getUsers('first', null);
 
     refresher.complete();
   }
 
   doInfinite(infiniteScroll) {
     setTimeout(() => {
-      this.getUsers('next');
+      this.getUsers('next', infiniteScroll);
 
       infiniteScroll.complete();
-    }, 2000);
-    /*setTimeout(() => {
-      for (let i = 0; i < 5; i++) {
-        this.users.push({ name: 'title' + this.users.length });
-      }
-
-      infiniteScroll.complete();
-    }, 2000);*/
+    }, 500);
   }
+
+  /*doInfinite(): Promise<any> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.getUsers('next');
+
+        resolve();
+      }, 500);
+    })
+  }*/
 
 }
