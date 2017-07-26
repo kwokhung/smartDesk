@@ -16,7 +16,9 @@ ionic g provider userHelper
 ionic g provider authService
 
 npm install -g typescript cordova phonegap ionic
+npm install -g @ionic/cli-plugin-proxy
 npm install --save-dev typescript @ionic/app-scripts @ionic/cli-plugin-ionic-angular @ionic/cli-plugin-cordova
+npm install --save-dev --save-exact @ionic/cli-plugin-ionic-angular@latest
 
 ionic info
 ionic serve
