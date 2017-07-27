@@ -59,10 +59,10 @@ export class EditUserPage {
           buttons: ["Close"]
         }).present();
       }
-    }, (data: any) => {
+    }, (error: any) => {
       this.alertCtrl.create({
         title: 'System Error',
-        subTitle: JSON.stringify(data),
+        subTitle: JSON.stringify(error),
         buttons: ["Close"]
       }).present();
     });
