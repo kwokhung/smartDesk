@@ -162,8 +162,8 @@ export class UserHelper {
         })
       })).subscribe((data: Response) => {
         resolve(data.json());
-      }, (data: any) => {
-        reject(data);
+      }, (error: any) => {
+        reject(error);
       });
     });
   }
