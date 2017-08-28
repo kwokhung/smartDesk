@@ -20,14 +20,16 @@ npm install -g typescript
 npm install -g cordova
 npm install -g phonegap
 npm install -g ionic
-npm install --save-dev --save-exact ionic@latest
 npm install -g @ionic/cli-plugin-proxy
 npm install --save-dev typescript @ionic/app-scripts @ionic/cli-plugin-ionic-angular @ionic/cli-plugin-cordova
 npm install --save-dev --save-exact typescript@latest
+npm install --save-dev --save-exact ionic@latest
 npm install --save-dev --save-exact @ionic/app-scripts@latest
 npm install --save-dev --save-exact @ionic/app-scripts@1.3.12
 npm install --save-dev --save-exact @ionic/cli-plugin-cordova@latest
+npm uninstall --save-dev --save-exact @ionic/cli-plugin-cordova
 npm install --save-dev --save-exact @ionic/cli-plugin-ionic-angular@latest
+npm uninstall --save-dev --save-exact @ionic/cli-plugin-ionic-angular
 
 
 ionic info

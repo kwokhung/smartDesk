@@ -1,5 +1,8 @@
 {
   "name": "smartDesk",
   "app_id": "b8a63b0f",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
