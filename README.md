@@ -30,7 +30,8 @@ npm install --save-dev --save-exact @ionic/cli-plugin-cordova@latest
 npm uninstall --save-dev --save-exact @ionic/cli-plugin-cordova
 npm install --save-dev --save-exact @ionic/cli-plugin-ionic-angular@latest
 npm uninstall --save-dev --save-exact @ionic/cli-plugin-ionic-angular
-
+npm install --save-dev --save-exact electron@latest
+npm install --save-dev --save-exact electron-builder@latest
 
 ionic info
 ionic serve
