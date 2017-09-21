@@ -75,7 +75,7 @@ export class LoginPage {
       title: 'Fail',
       subTitle: text,
       buttons: ['OK']
-    }).present(prompt);
+    }).present();
   }
 
 }

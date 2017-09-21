@@ -42,10 +42,10 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "2.1.4",
-        "electron": "1.7.5",
-        "electron-builder": "19.26.3",
-        "ionic": "3.9.2",
-        "typescript": "2.4.2"
+        "electron": "1.7.6",
+        "electron-builder": "19.27.7",
+        "ionic": "3.10.3",
+        "typescript": "2.5.2"
     },
     "description": "An Ionic project",
     "build": {
