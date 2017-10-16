@@ -41,11 +41,11 @@
         "zone.js": "0.8.12"
     },
     "devDependencies": {
-        "@ionic/app-scripts": "2.1.4",
-        "electron": "1.7.6",
-        "electron-builder": "19.27.7",
-        "ionic": "3.10.3",
-        "typescript": "2.5.2"
+        "@ionic/app-scripts": "3.0.0",
+        "electron": "1.7.9",
+        "electron-builder": "19.37.1",
+        "ionic": "3.13.0",
+        "typescript": "2.5.3"
     },
     "description": "An Ionic project",
     "build": {
