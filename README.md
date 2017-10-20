@@ -49,3 +49,20 @@ npm install electron electron-builder --save-dev
 
 npm run electron
 npm run ebuild
+
+npm install -g ionic@latest
+npm install ionic-angular@3.7.0 --save
+npm install @ionic/app-scripts@3.0.0 --save-dev
+npm install @angular/core@4.4.3 --save
+npm install @angular/common@4.4.3 --save
+npm install @angular/compiler@4.4.3 --save
+npm install @angular/compiler-cli@4.4.3 --save
+npm install @angular/forms@4.4.3 --save
+npm install @angular/http@4.4.3 --save
+npm install @angular/platform-browser@4.4.3 --save
+npm install @angular/platform-browser-dynamic@4.4.3 --save
+npm install rxjs@5.4.3 --save
+npm install zone.js@0.8.17 --save
+
+ionic cordova plugin rm cordova-plugin-WKWebView-engine
+ionic cordova plugin add cordova-plugin-ionic-webview --save
