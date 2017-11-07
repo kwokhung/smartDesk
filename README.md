@@ -63,6 +63,7 @@ npm install @angular/platform-browser@4.4.3 --save
 npm install @angular/platform-browser-dynamic@4.4.3 --save
 npm install rxjs@5.4.3 --save
 npm install zone.js@0.8.17 --save
+npm rebuild node-sass
 
 ionic cordova plugin rm cordova-plugin-WKWebView-engine
 ionic cordova plugin add cordova-plugin-ionic-webview --save
