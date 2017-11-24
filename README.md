@@ -50,6 +50,21 @@ npm install electron electron-builder --save-dev
 npm run electron
 npm run ebuild
 
+# Global
+npm install -g typescript
+npm install -g cordova
+npm install -g phonegap
+npm install -g ionic
+npm install -g @ionic/cli-plugin-proxy
+
+# Tools
+npm install --save-dev --save-exact typescript@latest
+npm install --save-dev --save-exact ionic@latest
+npm install --save-dev --save-exact @ionic/app-scripts@latest
+
+# Rebuild
+npm rebuild node-sass
+
 npm install -g ionic@latest
 npm install ionic-angular@3.7.0 --save
 npm install @ionic/app-scripts@3.0.0 --save-dev
