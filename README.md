@@ -52,6 +52,7 @@ npm run ebuild
 
 # Global
 npm install --global --production windows-build-tools
+npm install -g node-gyp
 npm uninstall npm -g
 npm install -g typescript
 npm install -g cordova
