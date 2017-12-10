@@ -51,6 +51,7 @@ npm run electron
 npm run ebuild
 
 # Global
+npm uninstall npm -g
 npm install -g typescript
 npm install -g cordova
 npm install -g phonegap
